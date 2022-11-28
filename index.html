@@ -1,0 +1,511 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  
+<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+<link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+
+
+  <title>CodePen - The User&#39;s Responsive Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+  
+<style>
+/*
+
+Handcrafted by David Pottrell via Yoto Creative (https://www.yotocreative.co.uk)
+
+Description:
+This menu is an attempt at making our end user's experience just that little bit more easier while they're on their mobile or tablet device ensuring the primary actions of the website are always in reach.
+
+*/
+
+
+/*=============MENU STARTS HERE=============*/
+
+
+nav#navigation {
+    float:right;
+    position:relative;
+    margin-top:50px
+}
+
+nav#navigation .nav-trigger {
+    display:none;
+    position:absolute;
+    top:-3px;
+    left:50%;
+    margin-left:-23.5px;
+    background:#FF4081;
+    border-radius:50%;
+    overflow:hidden;
+    text-indent:-9999px;
+    white-space:nowrap;
+    z-index:11;
+    cursor:pointer;
+    box-shadow:0 0 10px rgba(0,0,0,0.5);
+    -webkit-animation-name:bounce;
+    animation-name:bounce;
+    -webkit-animation-duration:2s;
+    animation-duration:2s;
+    -webkit-animation-fill-mode:both;
+    animation-fill-mode:both;
+    -webkit-animation-timing-function:ease-in-out;
+    animation-timing-function:ease-in-out;
+    animation-iteration-count:2;
+    -webkit-animation-iteration-count:2;
+    -webkit-animation-delay:3s;
+    animation-delay:3s;
+    -webkit-transition:all .3s;
+    -moz-transition:all .3s;
+    transition:all .3s
+}
+
+nav#navigation ul.is-hidden {
+    -webkit-transform:scale(0);
+    -moz-transform:scale(0);
+    -ms-transform:scale(0);
+    -o-transform:scale(0);
+    transform:scale(0);
+    -webkit-transition:0 .5s;
+    -moz-transition:0 .5s;
+    transition:transform .5s
+}
+
+nav#navigation ul li {
+    float:left;
+    list-style:none;
+    text-align:center;
+}
+
+nav#navigation ul li a {
+    display:block;
+    color:#fff;
+    padding:5px 10px;
+    font-size:20px;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+}
+
+nav#navigation ul li a:hover {
+    background:#3F51B5
+}
+
+.call .fa,.email .fa {color:#FFF;font-size:25px;}
+.call,.email {display:none;}
+.call {margin:12px 0 0 7.5%;}
+.email {margin:10px 7.5% 0 0;}
+
+
+/*=============LAYOUT STARTS HERE=============*/
+
+
+html,body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,form {margin:0;padding:0;border:none}
+a,a:link,a:visited,a:hover,a:active {text-decoration:none}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {display:block}
+.alignCenter {text-align:center}
+.alignRight {text-align:right}
+.alignLeft {text-align:left}
+.padTop {padding-top:5%}
+.padBottom {padding-bottom:5%}
+.bg-color1 {background:#FFF}
+.bg-color2 {background:#EEE}
+.bg-color3 {background:#FF4081}
+.bg-color4 {background:#F5F5F5}
+.txt-white {color:#FFF}
+.mW {max-width:800px;margin:auto}
+.clear::after {clear:both;content:"";display:table}
+::selection {background:#000;color:#fff}
+::-moz-selection {background:#000;color:#fff}
+h1 {font-size:38px}
+h2 {font-size:28px;font-weight:400}
+body {font-family:'Roboto',sans-serif}
+p {margin-bottom:15px;font-weight:300}
+p:last-child {margin-bottom:0}
+html {height:100%;margin:0;padding:0;font-size:16px;overflow-y:initial}
+body {margin:0;padding:0;background:#E8E8E8}
+div#wrap {width:95%;max-width:1250px;margin:auto;box-shadow:0 0 3px rgba(0,0,0,0.5)}
+#banner .container {padding:10% 2.5%;max-width:800px;}
+.container {width:95%;height:100%;max-width:1250px;margin:auto;padding-right:2.5%;padding-left:2.5%}
+header {width:100%;height:135px;background:#3F51B5;box-shadow:0 0 3px rgba(0,0,0,0.5);position:relative}
+#logo {width:180px;background:#FF4081;padding:20px 0;display:block;float:left;margin-top:30px;text-align:center}
+#logo h1 {color:#FFF;font-weight:300;text-transform:uppercase;font-size:26px}
+footer {background:#212121;color:#FFF;padding:25px 0;}
+
+
+
+	@media only screen and (max-width : 900px) {
+	
+	
+	/*=============NAVIGATION STARTS HERE=============*/
+	
+	
+	nav#navigation {
+	position:fixed;
+	bottom:0;
+	left:0;
+	width:100%;
+	margin:0;
+	background:#3F51B5;
+	z-index:7777;
+	box-shadow:0 0 3px rgba(0,0,0,0.5)
+	}
+
+	nav#navigation ul li {
+	width:20%
+	}
+
+	nav#navigation ul li a {
+	padding:15px 0;
+	font-size:18px
+	}
+
+	
+	/*=============LAYOUT STARTS HERE=============*/
+	
+	
+	header {height:70px}
+	div#logoBox {background:#E91E63;width:100%;position:fixed;top:0;left:0}
+	a#logo {width:150px;height:35px;margin:auto;position:relative;top:9px;float:none;padding:8px 0}
+	.padTop {padding-top:10%}
+	.padBottom {padding-bottom:10%}
+	footer {padding:25px 0 80px}
+	}
+
+		@media only screen and (max-width : 550px) {
+		
+		
+		/*=============NAVIGATION STARTS HERE=============*/
+		
+		
+		nav#navigation .nav-trigger:before {
+		font-family:'FontAwesome';
+		content:'\f077';
+		color:#FFF;
+		width:25px;
+		text-align:center;
+		display:block;
+		height:27px;
+		padding:10px 11px;
+		font-size:24px;
+		line-height:20px;
+		-webkit-backface-visibility:visible;
+		backface-visibility:visible;
+		-webkit-transition:-webkit-transform .3s;
+		transition:transform .3s;
+		text-indent:0;
+		float:left;
+		-webkit-transform:rotateX(0deg);
+		transform:rotateX(0deg)
+		}
+
+		nav#navigation .nav-trigger.open:before {
+		-webkit-transform:rotateX(-180deg);
+		transform:rotateX(-180deg);
+		-webkit-backface-visibility:visible;
+		backface-visibility:visible
+		}
+
+		nav#navigation .nav-trigger {
+		display:block
+		}
+
+		nav#navigation .nav-trigger:hover {
+		box-shadow:0 0 5px rgba(0,0,0,0.25);
+		background:#E63974
+		}
+
+		nav#navigation .nav-trigger span {
+		position:absolute;
+		display:block;
+		width:20px;
+		height:2px;
+		background:#FFF;
+		top:18px;
+		left:50%;
+		margin-left:-10px;
+		-webkit-transition:background .5s;
+		-moz-transition:background .5s;
+		transition:background .5s
+		}
+
+		nav#navigation .nav-trigger span::before,.nav-trigger span::after {
+		content:'';
+		position:absolute;
+		left:0;
+		background:inherit;
+		width:100%;
+		height:100%;
+		-webkit-transform:translateZ(0);
+		-moz-transform:translateZ(0);
+		-ms-transform:translateZ(0);
+		-o-transform:translateZ(0);
+		transform:translateZ(0);
+		-webkit-backface-visibility:hidden;
+		backface-visibility:hidden;
+		-webkit-transition:transform .5s;
+		-moz-transition:transform .5s;
+		transition:transform .5s
+		}
+
+		nav#navigation .nav-trigger span::before {
+		top:-6px;
+		-webkit-transform:rotate(0);
+		-moz-transform:rotate(0);
+		-ms-transform:rotate(0);
+		-o-transform:rotate(0);
+		transform:rotate(0)
+		}
+
+		nav#navigation .nav-trigger span::after {
+		bottom:-6px;
+		-webkit-transform:rotate(0);
+		-moz-transform:rotate(0);
+		-ms-transform:rotate(0);
+		-o-transform:rotate(0);
+		transform:rotate(0)
+		}
+
+		nav#navigation .nav-trigger.open span {
+		background:rgba(255,255,255,0)
+		}
+
+		nav#navigation .nav-trigger.open span::before,.nav-trigger.open span::after {
+		background:#FFF
+		}
+
+		nav#navigation .nav-trigger.open span::before {
+		top:0;
+		-webkit-transform:rotate(135deg);
+		-moz-transform:rotate(135deg);
+		-ms-transform:rotate(135deg);
+		-o-transform:rotate(135deg);
+		transform:rotate(135deg)
+		}
+
+		nav#navigation .nav-trigger.open span::after {
+		bottom:0;
+		-webkit-transform:rotate(225deg);
+		-moz-transform:rotate(225deg);
+		-ms-transform:rotate(225deg);
+		-o-transform:rotate(225deg);
+		transform:rotate(225deg)
+		}
+
+		nav#navigation ul {
+		width:100%;
+		position:absolute;
+		bottom:-340px;
+		background:#303F9F;
+		box-shadow:0 0 10px rgba(0,0,0,0.6);
+		z-index:1111;
+		-webkit-transition:all .5s ease-in-out;
+		-moz-transition:all .5s ease-in-out;
+		-o-transition:all .5s ease-in-out;
+		transition:all .5s ease-in-out
+		}
+
+		nav#navigation ul.is-visible {
+		bottom:53px
+		}
+
+		nav#navigation ul.is-visible li a {
+		visibility:visible
+		}
+
+		nav#navigation ul li {
+		width:100%;
+		border-bottom:1px solid #3F51B5
+		}
+
+		nav#navigation ul li:last-child {
+		border:0;
+		}
+
+		nav#navigation ul li:last-child a {
+		padding-bottom:20px
+		}
+
+		nav#navigation ul li a {
+		font-size:16px;
+		}
+
+		nav#navigation ul li.last a {
+		background:none;
+		border:0;
+		display:block;
+		padding:15px 0;
+		color:#FFF;
+		font-size:.8em
+		}
+
+		nav#navigation ul li.last a:hover {
+		border:0
+		}
+
+		div#navigationBox {
+		width:100%;
+		height:38px;
+		padding:5px 0 10px;
+		z-index:9999;
+		position:relative;
+		background:#3F51B5;
+		box-shadow:0 0 10px rgba(0,0,0,0.3)
+		}
+
+		.call,.email {display:inline-block}
+		.call span,.email span {display:none}
+		.call {float:left}
+		.email {float:right}
+
+		
+		/*=============LAYOUT STARTS HERE=============*/
+		
+		
+		footer {padding:25px 0 78px}
+		}
+
+					
+			/*=============ANIMATION STARTS HERE=============*/
+
+
+			@-webkit-keyframes bounce {
+			0%,20%,50%,80%,100% {-webkit-transform:translateY(0)}
+			40% {-webkit-transform:translateY(-5px)}
+			60% {-webkit-transform:translateY(-2px)}
+			}
+
+			@keyframes bounce {
+			0%,20%,50%,80%,100% {transform:translateY(0)}
+			40% {transform:translateY(-5px)}
+			60% {transform:translateY(-2px)}
+			}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+  <body>
+<!--Responsive navigation starts inside header-->
+<header>
+	<div class="container">
+		<a id="logo" href="index.html"><h1>LDS</h1></a>
+		<!--Where the magic happens-->
+		<nav id="navigation">
+			<div id="navigationBox">
+				<div class="call">
+					<a href="tel:+19713826330" title="Call Us"><i class="fa fa-phone"></i><span>Call Us</span></a>
+				</div>
+				<div class="nav-trigger">
+					Menu
+				</div>
+				<div class="email">
+					
+				</div>
+			</div>
+			<ul class="menu">
+				<li><a href="#" title="HOME">HOME</a></li>
+				<li><a href="#" title="Track Package">Track Package</a></li>
+				<li><a href="#" title="ABOUT US">ABOUT US</a></li>
+				<li><a href="#" title="Click-N-Ship">Click-N-Ship</a></li>
+				<li><a href="#" title="Contact">Contact</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+	
+<!--Filler-->
+<div id="wrap">
+	<section id="banner" class="bg-color1">
+		<div class="container mW alignCenter">
+			<h1>Welcome</h1>
+                        <p><b>MONDAY THRU FRIDAY</b> </p>
+                        <p><b>SATURDAY AND SUNDAY [CLOSED]</b> </p>
+			<p><b>OUR BUSINESS HOURS 10 am - 6pm</b> </p>
+		</div>
+	</section>
+	
+	<section>
+		<div class="container padTop bg-color2 padBottom">
+			<div class="mW">
+				<h2>SERVICE ALERT</h2>
+				<font color="RED"><b><p>NO ALERT AVAILABLE</p></b></font>
+			</div>
+		</div>
+	</section>	
+	
+		<section>
+		<div class="container padTop bg-color2 padBottom">
+			<div class="mW">
+				<h2>Lorem ipsum</h2>
+				<p><iframe src="https://script.google.com/macros/s/AKfycbzS6JeHNdrlSYIr4yItAU3i7_k-BBziu3KlXoQ-ZP-sQ0LTJNK8Pdlv0KdlC72p8bnW/exec" name="myIFrame" style="border: solid #000000;"></iframe> </p>
+			</div>
+		</div>
+	</section>
+				
+			</div>
+		</div>
+	</section>	
+	
+	<section>
+		<div class="container padTop bg-color4 padBottom">
+			<div class="mW">
+				<h2>Lorem ipsum</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+			</div>
+		</div>
+	</section>	
+</div>
+
+<footer>
+<div class="container alignCenter">
+Footer
+</div>
+</footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+      <script id="rendered-js" >
+//Mobile Menu
+jQuery(document).ready(function ($) {
+  var navigation = $('#navigation'),
+  main = navigation.find('ul.menu');
+  $('.nav-trigger').on('click', function () {
+    $(this).toggleClass('open');
+    main.off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend').toggleClass('is-visible');
+  });
+});
+//# sourceURL=pen.js
+    </script>
+
+  
+
+</body>
+
+</html>
+ 
